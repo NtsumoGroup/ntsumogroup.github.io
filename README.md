@@ -1,28 +1,30 @@
-# Ntsumo website
+# Ntsumo website refresh
 
-Static site for GitHub Pages (ntsumogroup.github.io). No build step needed.
+Static website for GitHub Pages (`ntsumogroup.github.io`). No build step is required.
 
-## Before you publish: replace 3 placeholders
-Search the folder for `{{` and replace:
-- `{{EMAIL}}`         your business email (contact, privacy, terms pages)
-- `{{WHATSAPP}}`     WhatsApp number, digits only with country code, e.g. 27XXXXXXXXX (contact page)
-- `{{FORMSPREE_ID}}` the ID from a free form at formspree.io (contact page). If you use a different
-                     form service, update the form action and the "Who processes it for us" line in /privacy/.
+## What's changed
+- Repositioned Ntsumo as a remote-first small-business digital services and automation business for South Africa and Zimbabwe.
+- Reworked the homepage around websites, booking/enquiry workflows and ongoing support.
+- Added introductory USD package pricing with scope and third-party-cost caveats.
+- Added a clearer quote form, WhatsApp contact CTA, service detail pages and a consistent visual system.
+- Removed references to image files that were not included in the uploaded source archive.
+- Updated privacy/terms copy and responsive styling.
 
-## Publish
-1. In the repo ntsumogroup.github.io, keep the /img folder (portfolio and team photos are reused).
-2. Delete the old template files (old index.html, css/, js/, vendor/, mail/ etc.) and copy this folder's
-   contents into the repo root.
-3. Commit and push. GitHub Pages updates in a minute or two.
+## Before publishing — important
+1. **Connect the enquiry form.** In `contact/index.html`, replace `{{FORMSPREE_ID}}` with your real Formspree form ID, or configure another form service. Until you do this, the form deliberately shows a message directing visitors to WhatsApp/email.
+2. **Verify contact details.** Confirm `sibisifrank3@gmail.com` and WhatsApp number `27614979449` are the contact details you want published. They were retained from the supplied site.
+3. **Review prices and payment methods.** The USD prices are proposed introductory test prices, not market-verified rates. Confirm your preferred payment method, currency and cross-border requirements before publishing/accepting work.
+4. **Review legal copy.** Privacy and terms pages are a practical starting point, not legal advice. Ask a qualified adviser to review them for your actual data flows and cross-border business structure.
+5. **Check existing assets.** The ZIP provided did not contain the `/img/` directory referenced by the previous site. This version avoids those missing local image paths.
 
-## Google
-1. Search Console: add the site, verify it, then submit /sitemap.xml.
-2. Request indexing for the home page and /services/.
-3. Custom domain (recommended): buy a domain, add a CNAME file to the repo root containing the domain,
-   set the DNS records GitHub lists, tick "Enforce HTTPS", then find-and-replace
-   https://ntsumogroup.github.io with your domain in every .html file, sitemap.xml and robots.txt.
-4. Google Business Profile: create one if you want to appear in local searches.
+## Publish to GitHub Pages
+1. Download and extract this ZIP.
+2. Open the extracted `ntsumogroup.github.io` folder.
+3. Review the changes locally with `python3 -m http.server 8000` from that folder, then open `http://localhost:8000`.
+4. Commit and push the contents of that folder to the root of the `ntsumogroup.github.io` repository. Keep a backup or branch of the current live version first.
+5. Check the live homepage, `/services/`, `/contact/`, mobile layout, and contact links after deployment.
 
-## Preview locally
-Paths start with "/", so preview through a server, not by double-clicking:
-python3 -m http.server 8000   then open http://localhost:8000
+## Current limitations
+- This is a static website; it does not itself create booking calendars or send WhatsApp/SMS messages.
+- Actual booking, messaging, hosting and automation functionality depends on the selected third-party tools and configuration.
+- No new client testimonials or results have been invented.

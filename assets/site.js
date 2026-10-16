@@ -1,39 +1,36 @@
-// Contact form: sends the enquiry to Formspree without leaving the page.
+// Progressive enhancement for the enquiry form. The static fallback stays available.
 (function () {
   var form = document.getElementById("enquiry-form");
   if (!form) return;
   var status = document.getElementById("form-status");
   var button = form.querySelector("button[type=submit]");
-
-  function show(message, kind) {
-    status.textContent = message;
-    status.className = "form-status " + kind;
-  }
-
+  // Preselect a service when a visitor arrives from a package-specific CTA.
+  try {
+    var requestedService = new URLSearchParams(window.location.search).get("service");
+    var interest = form.querySelector("select[name=interest]");
+    if (requestedService && interest) {
+      var wanted = requestedService.toLowerCase();
+      Array.prototype.forEach.call(interest.options, function (option) {
+        if (option.text.toLowerCase().indexOf(wanted) !== -1 || wanted.indexOf(option.text.toLowerCase().split(" —")[0]) !== -1) {
+          interest.value = option.value;
+        }
+      });
+    }
+  } catch (ignore) {}
+  function show(message, kind) { status.textContent = message; status.className = "form-status " + kind; }
   form.addEventListener("submit", function (event) {
-    event.preventDefault();
     var action = form.getAttribute("action") || "";
-    if (action.indexOf("{{") !== -1) {
-      show("This form is not connected yet. Please use the email or WhatsApp link on this page.", "err");
+    if (action.indexOf("{{") !== -1 || action.indexOf("YOUR_FORM_ID") !== -1) {
+      event.preventDefault();
+      show("The online form is not connected yet. Please use the WhatsApp or email contact options on this page.", "err");
       return;
     }
+    event.preventDefault();
     button.disabled = true;
-    show("Sending your request...", "ok");
-    fetch(action, {
-      method: "POST",
-      body: new FormData(form),
-      headers: { Accept: "application/json" }
-    })
-      .then(function (response) {
-        if (!response.ok) throw new Error("Request failed");
-        form.reset();
-        show("Request sent. We will reply by email or WhatsApp.", "ok");
-      })
-      .catch(function () {
-        show("Your request did not send. Check your connection and try again, or use the email link on this page.", "err");
-      })
-      .then(function () {
-        button.disabled = false;
-      });
+    show("Sending your enquiry…", "ok");
+    fetch(action, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } })
+      .then(function (response) { if (!response.ok) throw new Error("Request failed"); form.reset(); show("Enquiry sent. We'll reply using the contact details you provided.", "ok"); })
+      .catch(function () { show("Your enquiry did not send. Please try again or use the WhatsApp/email links.", "err"); })
+      .then(function () { button.disabled = false; });
   });
 })();
