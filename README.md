@@ -1,6 +1,6 @@
 # Ntsumo website refresh
 
-Static website for GitHub Pages (`ntsumogroup.github.io`). No build step is required.
+Static website for GitHub Pages, served at https://ntsumo.co.za (repo `ntsumogroup.github.io`). No build step is required.
 
 ## What's changed
 - Repositioned Ntsumo as a remote-first small-business digital services and automation business for South Africa and Zimbabwe.
