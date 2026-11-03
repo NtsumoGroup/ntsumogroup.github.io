@@ -3,7 +3,7 @@
 Static website for GitHub Pages, served at https://ntsumo.co.za (repo `ntsumogroup.github.io`). No build step is required.
 
 ## What's changed
-- Repositioned Ntsumo as a remote-first small-business digital services and automation business for South Africa and Zimbabwe.
+- Repositioned Ntsumo as a remote-first small-business digital services and automation business for South Africa and clients worldwide.
 - Reworked the homepage around websites, booking/enquiry workflows and ongoing support.
 - Added introductory USD package pricing with scope and third-party-cost caveats.
 - Added a clearer quote form, WhatsApp contact CTA, service detail pages and a consistent visual system.
