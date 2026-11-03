@@ -12,7 +12,7 @@ Static website for GitHub Pages, served at https://ntsumo.co.za (repo `ntsumogro
 
 ## Before publishing — important
 1. **Connect the enquiry form.** In `contact/index.html`, replace `{{FORMSPREE_ID}}` with your real Formspree form ID, or configure another form service. Until you do this, the form deliberately shows a message directing visitors to WhatsApp/email.
-2. **Verify contact details.** Confirm `sibisifrank3@gmail.com` and WhatsApp number `27614979449` are the contact details you want published. They were retained from the supplied site.
+2. **Verify contact details.** Confirm `info@ntsumo.co.za` and WhatsApp number `27614979449` are the contact details you want published. They were retained from the supplied site.
 3. **Review prices and payment methods.** The USD prices are proposed introductory test prices, not market-verified rates. Confirm your preferred payment method, currency and cross-border requirements before publishing/accepting work.
 4. **Review legal copy.** Privacy and terms pages are a practical starting point, not legal advice. Ask a qualified adviser to review them for your actual data flows and cross-border business structure.
 5. **Check existing assets.** The ZIP provided did not contain the `/img/` directory referenced by the previous site. This version avoids those missing local image paths.
