@@ -28,8 +28,10 @@
     event.preventDefault();
     button.disabled = true;
     show("Sending your enquiry…", "ok");
-    fetch(action, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } })
-      .then(function (response) { if (!response.ok) throw new Error("Request failed"); form.reset(); show("Enquiry sent. We'll reply using the contact details you provided.", "ok"); })
+    // URL-encoded so the Google Apps Script endpoint can read the fields (e.parameter).
+    fetch(action, { method: "POST", body: new URLSearchParams(new FormData(form)) })
+      .then(function (response) { if (!response.ok) throw new Error("Request failed"); return response.json(); })
+      .then(function (result) { if (!result || !result.ok) throw new Error("Rejected"); form.reset(); show("Enquiry sent. We'll reply using the contact details you provided.", "ok"); })
       .catch(function () { show("Your enquiry did not send. Please try again or use the WhatsApp/email links.", "err"); })
       .then(function () { button.disabled = false; });
   });
